@@ -9,7 +9,6 @@ def setup_teardown():
     driver.implicitly_wait(5)
     driver.maximize_window()
     driver.get('https://startaideia.com.br/')
-    pytest.mark.nav_bar = pytest.mark.mark('nav_bar')
     
     # Run Test
     yield 

@@ -5,7 +5,6 @@ import pytest
 import conftest
 
 @pytest.mark.usefixtures('setup_teardown')
-pytest.mark.nav_bar = pytest.mark.mark('nav_bar')
 @pytest.mark.nav_bar
 class TestCT07:
     def test_ct07_carreiras(self):
