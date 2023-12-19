@@ -4,6 +4,7 @@ import pytest
 import conftest
 
 @pytest.mark.usefixtures('setup_teardown')
+@pytest.mark.nav_bar
 class TestCT04:
     def test_ct04_carreiras(self):
         driver = conftest.driver

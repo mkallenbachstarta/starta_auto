@@ -3,6 +3,7 @@ import pytest
 import conftest
 
 @pytest.mark.usefixtures('setup_teardown')
+@pytest.mark.nav_bar
 class TestCT06:
     def test_ct06_cases(self):
         driver = conftest.driver
