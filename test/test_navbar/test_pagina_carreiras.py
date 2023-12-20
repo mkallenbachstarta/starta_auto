@@ -4,7 +4,7 @@ from time import sleep
 import pytest
 import conftest
 
-@pytest.mark.usefixtures('setup_teardown')
+@pytest.mark.usefixtures('setup_teardown_navbar')
 @pytest.mark.nav_bar
 class TestCT07:
     def test_ct07_carreiras(self):
