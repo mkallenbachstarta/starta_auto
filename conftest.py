@@ -3,27 +3,36 @@ from selenium import webdriver
 
 @pytest.fixture
 def setup_teardown_navbar():
-    #Setup
+    # Setup
     global driver
+    # Inicializa o driver do Chrome
     driver = webdriver.Chrome()
+    # Define um tempo de espera implícito para esperar por elementos
     driver.implicitly_wait(5)
+    # Maximiza a janela do navegador
     driver.maximize_window()
+    # Navega para a URL inicial
     driver.get('https://startaideia.com.br/')
     
-    # Run Test
+    # Executa o teste
     yield 
     
-    #Teardown
+    # Teardown
+    # Fecha o navegador após a execução do teste
     driver.quit()
 
 @pytest.fixture   
 def setup_no_teardown():
-        #Setup
+    # Setup
     global driver
+    # Inicializa o driver do Chrome
     driver = webdriver.Chrome()
+    # Define um tempo de espera implícito para esperar por elementos
     driver.implicitly_wait(5)
+    # Maximiza a janela do navegador
     driver.maximize_window()
+    # Navega para a URL inicial
     driver.get('https://startaideia.com.br/')
     
-    # Run Test
-    yield 
+    # Executa o teste
+    yield
