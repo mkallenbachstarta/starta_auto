@@ -119,3 +119,33 @@ class TestCT01_5_feedback:
         #Clica no botão de depoimento e verifica se passou o banner
         driver.find_element(By.XPATH, "//*[@id='root']/main/section[6]/div/div[2]/button[2]").click()
         assert driver.find_element(By.CLASS_NAME, "styles_quote__jYKbe").is_displayed()  
+
+
+@pytest.mark.blog
+@pytest.mark.usefixtures('setup_teardown_navbar')
+class TestCT01_5_blog:
+    def test_ct01_5_acess_blog(self):
+        # Obtém a instância do driver do conftest
+        driver = conftest.driver
+        
+        #Encontra a matéria e entra no blog
+        driver.find_element(By.CLASS_NAME, "styles_subtitle__TDvk6").click()
+        
+        #Verifica se o blog foi carregado corretamente 
+        if len(driver.window_handles) > 1:
+            driver.switch_to.window(driver.window_handles[1])
+        assert driver.current_url == "https://medium.com/@startaideia/desvendando-o-flutter-cc207f405f20"
+        
+
+    def test_ct01_5_acess_all_blog(self):
+        # Obtém a instância do driver do conftest
+        driver = conftest.driver
+        
+        #Clica no botão para ver todos os artigos 
+        driver.find_element(By.XPATH, "//*[@id='root']/main/section[8]/a/button").click()
+        
+        
+        #Verifica se o blog carregou
+        if len(driver.window_handles) > 1:
+            driver.switch_to.window(driver.window_handles[1])
+        assert driver.current_url == "https://medium.com/@startaideia"
