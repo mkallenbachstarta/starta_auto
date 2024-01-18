@@ -3,7 +3,7 @@ from selenium.webdriver.common.action_chains import ActionChains
 import pytest
 import conftest
 
-@pytest.mark.usefixtures('setup_teardown_navbar')
+@pytest.mark.usefixtures('setup_teardown')
 @pytest.mark.nav_bar
 class TestCT03:
     def test_ct03_produtos(self):

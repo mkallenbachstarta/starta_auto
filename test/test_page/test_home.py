@@ -122,7 +122,7 @@ class TestCT01_5_feedback:
 
 
 @pytest.mark.blog
-@pytest.mark.usefixtures('setup_teardown_navbar')
+@pytest.mark.usefixtures('setup_teardown')
 class TestCT01_5_blog:
     def test_ct01_5_acess_blog(self):
         # Obtém a instância do driver do conftest

@@ -2,7 +2,7 @@ import pytest
 from selenium import webdriver
 
 @pytest.fixture
-def setup_teardown_navbar():
+def setup_teardown():
     # Setup
     global driver
     # Inicializa o driver do Chrome
