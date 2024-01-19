@@ -108,6 +108,14 @@ class TestCT01_4_cases:
         arrow.click()
         assert "disabled" not in arrow.get_attribute("class")  
         
+    def test_ct01_3_cases_all(self):
+        # Obtém a instância do driver do conftest
+        driver = conftest.driver
+        
+        #Clica no botão de visualizar todos e verifica se carregou 
+        driver.find_element(By.XPATH, "//*[@id='root']/main/section[5]/div[2]/button").click()
+        assert driver.find_element(By.TAG_NAME, "h1").is_displayed()
+        
 
 @pytest.mark.feedback
 class TestCT01_5_feedback:
@@ -149,3 +157,109 @@ class TestCT01_5_blog:
         if len(driver.window_handles) > 1:
             driver.switch_to.window(driver.window_handles[1])
         assert driver.current_url == "https://medium.com/@startaideia"
+        
+        
+@pytest.mark.footer
+@pytest.mark.usefixtures('setup_teardown')
+class Test_ct01_6_footer:
+    def test_ct01_6_footer_social_media_instagram(self):
+        # Obtém a instância do driver do conftest
+        driver = conftest.driver
+        
+        #Clica no icon do instagram
+        driver.find_element(By.XPATH, '//a[@aria-label="Instagram"]').click()
+        
+        #Verifica se carregou
+        if len(driver.window_handles) > 1:
+            driver.switch_to.window(driver.window_handles[1])
+        assert driver.current_url == "https://www.instagram.com/startaideia/"
+        
+        
+    def test_ct01_6_footer_social_media_facebook(self):
+        # Obtém a instância do driver do conftest
+        driver = conftest.driver
+        
+        #Clica no icon do Facebook
+        driver.find_element(By.XPATH, '//a[@aria-label="Facebook"]').click()
+        
+        #Verifica se carregou
+        assert driver.current_url == "https://www.facebook.com/startaideia/"
+
+    def test_ct01_6_footer_social_media_x(self):
+        # Obtém a instância do driver do conftest
+        driver = conftest.driver
+        
+        #Clica no icon do Twitter
+        driver.find_element(By.XPATH, '//a[@aria-label="Twitter"]').click()
+        
+        #Verifica se carregou
+        assert driver.current_url == "https://twitter.com/startaideia"
+
+
+    def test_ct01_6_footer_social_media_linkedin(self):
+        # Obtém a instância do driver do conftest
+        driver = conftest.driver
+        
+        #Clica no icon do Linkedin
+        driver.find_element(By.XPATH, '//a[@aria-label="LinkedIn"]').click()
+        
+        #Verifica se carregou
+        assert driver.current_url == "https://www.linkedin.com/company/startaideia/"
+        
+    def test_ct01_6_footer_social_media_youtube(self):
+        # Obtém a instância do driver do conftest
+        driver = conftest.driver
+        
+        #Clica no icon do Youtube
+        driver.find_element(By.XPATH, '//a[@aria-label="YouTube"]').click()
+        
+        #Verifica se carregou
+        assert driver.current_url == "https://www.youtube.com/@startaideia1615"
+
+
+    
+    def test_ct01_6_footer_pages(self):
+        # Obtém a instância do driver do conftest
+        driver = conftest.driver
+        
+        #Clica no botão "Sobre", verifica se carregou e da um back. 
+        driver.find_element(By.XPATH, '//a[@href="/sobre"]').click()
+        assert driver.find_element(By.CLASS_NAME, 'styles_title__rp8qE').is_displayed()
+        driver.back()
+        
+        #Clica no botão "Produtos", verifica se carregou e da um back. 
+        driver.find_element(By.XPATH, '//a[@href="/produtos"]').click()
+        assert driver.find_element(By.CLASS_NAME, 'styles_title__NZDlk').is_displayed()
+        driver.back()
+        
+        #Clica no botão "Cases", verifica se carregou e da um back. 
+        driver.find_element(By.XPATH, '//a[@href="/cases"]').click()
+        assert driver.find_element(By.CLASS_NAME, 'styles_title__XNt24').is_displayed()
+        driver.back()
+        
+        #Clica no botão "Politica de privacidade", verifica se carregou e da um back. 
+        driver.find_element(By.XPATH, '//a[@href="/politica-de-protecao-de-dados"]').click()
+        assert driver.find_element(By.CLASS_NAME, 'styles_title__grdaz').is_displayed()
+        driver.back()
+        
+        #Clica no botão "Plano de Resposta a Incidentes", verifica se carregou e da um back. 
+        driver.find_element(By.XPATH, '//a[@href="/plano-incidentes-seguranca"]').click()
+        assert driver.find_element(By.CLASS_NAME, 'styles_title__grdaz').is_displayed()
+        driver.back()
+        
+        #Clica no botão "Portal do Cliente", verifica se carregou e da um back. 
+        driver.find_element(By.XPATH, '//a[@href="https://startaideia.atlassian.net/servicedesk/customer/portals"]').click()
+        assert driver.find_element(By.XPATH, '//div[@data-test-id="login-page.wrapper"]').is_displayed()
+        driver.back()
+        
+         #Clica no botão "WPP", verifica se carregou e da um quit. 
+        driver.find_element(By.XPATH, '//a[@href="https://wa.me/message/ZCED5PZEGJYDL1"]').click()
+        if len(driver.window_handles) > 1:
+            driver.switch_to.window(driver.window_handles[1])
+        assert driver.current_url.startswith("https://api.whatsapp.com/")
+        driver.quit()
+        
+        
+        
+        
+    
