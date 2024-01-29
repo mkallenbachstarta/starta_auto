@@ -184,7 +184,47 @@ Cypress.Commands.add('invalidPhoneInputAndVerifyEmptyValue', (inputSelector) => 
   // cy.get('.erro').should('be.visible').contains('Telefone inválido');
 });
 
+Cypress.Commands.add('clickButtonDropDownAndVerifyRedirect', ( locator_menu,targetPage) => {
+  /**
+   * Comando personalizado para clicar em um botão com base no texto e verificar o redirecionamento para uma página específica.
+   * @param {string} targetPage - URL esperada para a página redirecionada.
+   * @param {string} locator_menu - Passa o locator do dropdown
+   */
 
+  // Clique no botão com o texto especificado
+  cy.get('button.styles_dropdownTrigger__HFJtF:contains("Soluções")').click();
 
+  cy.get(`${locator_menu}`).click();
 
+  // Aguarde o redirecionamento ou certifique-se de que a URL da página mudou para a página esperada
+  cy.url().should('eq', `${targetPage}`);
+});
 
+Cypress.Commands.add('clickLogoAndVerifyRedirectAnyPage', (locator, index) => {
+  /**
+   * Comando personalizado para clicar em um botão com base no texto e verificar se a requisição AJAX deu status 200.
+   * @param {string} request - passa o request a acompanhar
+   * @param {number} index - indica qual o elemento a ser considerado
+   * @param {string} locator - Passa o locator 
+   */
+
+  // Clique no botão com o texto especificado
+  cy.get(locator).eq(index).click();
+
+  cy.url().should('not.eq', Cypress.config('baseUrl'));
+});
+
+Cypress.Commands.add('clickButtonDropDownAndStayPage', ( locator_menu,verify) => {
+  /**
+   * Comando personalizado para clicar em um botão com base no texto e verificar o redirecionamento para uma página específica.
+   * @param {string} verify - Verifica o texto presente na page
+   * @param {string} locator_menu - Passa o locator do dropdown
+   */
+
+  // Clique no botão com o texto especificado
+  cy.get('button.styles_button__Z4aA3').click();
+
+  cy.get(locator_menu).click()
+
+  cy.contains(verify)
+});
