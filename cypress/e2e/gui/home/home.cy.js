@@ -14,15 +14,15 @@ describe('Test homepage', () => {
   });
 
   it('Verifica se é redirecionado para a página de Fábrica de Software ao clicar no botão de Fábrica de Teste', () => {
-    cy.clickAndVerifyRedirection(0, 'Fábrica de Teste', 'Fábrica de Software');
+    cy.clickAndVerifyRedirection(0, 'button.styles_container__inRQn.styles_ghost__VCVpG', 'Fábrica de Software');
   });
   
   it('Verifica se é redirecionado para a página de Outsourcing ao clicar no botão de Outsourcing', () => {
-    cy.clickAndVerifyRedirection(1, 'Outsourcing', 'Outsourcing');
+    cy.clickAndVerifyRedirection(1, 'button.styles_container__inRQn.styles_ghost__VCVpG', 'Outsourcing');
   });
   
   it('Verifica se é redirecionado para a página de Produtos Starta ao clicar no botão de Produtos Starta', () => {
-    cy.clickAndVerifyRedirection(2, 'Produtos Starta', 'Veja alguns dos produtos desenvolvidos pela Startaideia');
+    cy.clickAndVerifyRedirection(2,'button.styles_container__inRQn.styles_ghost__VCVpG', 'Veja alguns dos produtos desenvolvidos pela Startaideia');
   });  
 
 

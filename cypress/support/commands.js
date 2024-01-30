@@ -36,11 +36,11 @@ Cypress.Commands.add('clickContactButtonAndCheckScroll', (buttonIndex) => {
 });
 
 
-Cypress.Commands.add('clickAndVerifyRedirection', (index, buttonText, targetText) => {
+Cypress.Commands.add('clickAndVerifyRedirection', (index, ghostButtonSelector, targetText) => {
   /**
    * Comando personalizado para clicar em um botão com base no índice e verificar o redirecionamento através da presença de um texto-alvo na página.
    * @param {number} index - Índice do botão a ser clicado.
-   * @param {string} buttonText - Texto no botão a ser clicado.
+   * @param {string} ghostButtonSelector - Locator
    * @param {string} targetText - Texto esperado para estar presente na página redirecionada.
    */
 
