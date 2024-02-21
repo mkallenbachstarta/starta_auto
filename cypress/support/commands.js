@@ -210,7 +210,7 @@ Cypress.Commands.add('clickLogoAndVerifyRedirectAnyPage', (locator, index) => {
 
   // Clique no botão com o texto especificado
   cy.get(locator).eq(index).click();
-
+  cy.wait(1000)
   cy.url().should('not.eq', Cypress.config('baseUrl'));
 });
 

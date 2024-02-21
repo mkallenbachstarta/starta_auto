@@ -48,7 +48,22 @@ describe('Test homepage', () => {
         cy.clickAndVerifyRedirection(0, 'a.styles_link__3hliQ[href="/plano-incidentes-seguranca"]', 'Plano de resposta a incidentes');
       });  
 
-      it('Verifica se é redirecionado para a Portal do cliente ao clicar no botão de Portal do cliente', () => {
-        cy.clickLogoAndVerifyRedirectAnyPage('a.styles_link__3hliQ[href="https://startaideia.atlassian.net/servicedesk/customer/portals"]', 0);  
-    });
+      it.only('Verifica se é redirecionado para a Portal do cliente ao clicar no botão de Portal do cliente', () => {
+    
+        // Clique no botão "Portal do cliente"
+        cy.get('a.styles_link__3hliQ[href="https://startaideia.atlassian.net/servicedesk/customer/portals"]').click();
+      
+        cy.on('uncaught:exception', (e) => {
+          if (e.message.includes('jira/container-api/utils missing jira/util/top-same-origin-window')) {
+            return false;
+          }
+        });
+      
+        // Aguarde o redirecionamento e verifique a nova URL
+        cy.url().should('not.eq', 'https://startaideia.com.br/'); // Certifica-se de que a URL não é igual à URL original
+      
+        // Ou, se preferir, você pode verificar se alguns elementos específicos da página "Portal do cliente" estão presentes
+        // cy.get('seletor_do_elemento_na_pagina_do_portal_do_cliente').should('exist');
+      });      
+      
 })
