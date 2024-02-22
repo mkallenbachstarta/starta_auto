@@ -24,8 +24,8 @@ describe('Test homepage', () => {
     it('Verifica a integridade dos textos - Caldeira ', () => {
         cy.get('p:has(span.styles_bold__d2FE0)')
         .invoke('text')
-        .should('include', 'Instituto Caldeira - Tv. São José, 455')
-        .should('include', 'R. Cândido Silveira, 198 - Navegantes, Porto Alegre - RS, 90540-010');      
+        .should('include', 'Instituto Caldeira')
+        .should('include', 'Tv. São José, 455 - Navegantes, Porto Alegre - RS, 90240-200');      
     });
 
     it('Verifica se é redirecionado para a página sobre ao clicar no botão de sobre', () => {
@@ -48,7 +48,7 @@ describe('Test homepage', () => {
         cy.clickAndVerifyRedirection(0, 'a.styles_link__3hliQ[href="/plano-incidentes-seguranca"]', 'Plano de resposta a incidentes');
       });  
 
-      it.only('Verifica se é redirecionado para a Portal do cliente ao clicar no botão de Portal do cliente', () => {
+      it('Verifica se é redirecionado para a Portal do cliente ao clicar no botão de Portal do cliente', () => {
     
         // Clique no botão "Portal do cliente"
         cy.get('a.styles_link__3hliQ[href="https://startaideia.atlassian.net/servicedesk/customer/portals"]').click();
