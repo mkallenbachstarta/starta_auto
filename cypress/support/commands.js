@@ -10,7 +10,7 @@ const fakeEmail = faker.internet.email();
 const fakePhone = faker.phone.phoneNumber();
 const fakeMessage = 'TEST-' + faker.lorem.sentence();  // Adiciona "TEST-" no início da mensagem
 
-Cypress.Commands.add('clickContactButtonAndCheckScroll', (buttonIndex) => {
+Cypress.Commands.add('clickContactButtonAndCheckScroll', (buttonIndex,contactButtonSelector) => {
   /**
    * Comando personalizado para clicar em um botão de contato e verificar se houve rolagem.
    * @param {number} buttonIndex - Índice do botão de contato a ser clicado.
@@ -161,8 +161,8 @@ Cypress.Commands.add('fillForm_contact', () => {
   cy.get('textarea[name="message"]').type(fakeMessage);
 });
 
-Cypress.Commands.add('clickContactSubmitButton', () => {
-  cy.get('button.styles_container__inRQn:contains("Enviar")').click();
+Cypress.Commands.add('clickContactSubmitButton', (text) => {
+  cy.get(`button.styles_container__inRQn:contains("${text}")`).click();
 });
 
 Cypress.Commands.add('clearInputAndVerifyError', (inputSelector, errorMessage) => {
@@ -227,4 +227,12 @@ Cypress.Commands.add('clickButtonDropDownAndStayPage', ( locator_menu,verify) =>
   cy.get(locator_menu).click()
 
   cy.contains(verify)
+});
+
+Cypress.Commands.add('click_button', (locator) => {
+  cy.get(locator).click();
+});
+
+Cypress.Commands.add('verifyRedirection', (expectedUrl) => {
+  cy.url().should('eq', expectedUrl);
 });

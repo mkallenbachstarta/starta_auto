@@ -6,11 +6,11 @@ describe('Test homepage', () => {
   
 
   it('Verifica se o scroll é acionado ao clicar no primeiro botão de contato', () => {
-    cy.clickContactButtonAndCheckScroll(0);
+    cy.clickContactButtonAndCheckScroll(0, 'a[href="#contact"] button.styles_container__inRQn');
   });
 
   it('Verifica se o scroll é acionado ao clicar no segundo botão de contato', () => {
-    cy.clickContactButtonAndCheckScroll(1);
+    cy.clickContactButtonAndCheckScroll(1, 'a[href="#contact"] button.styles_container__inRQn');
   });
 
   it('Verifica se é redirecionado para a página de Fábrica de Software ao clicar no botão de Fábrica de Teste', () => {
@@ -103,7 +103,7 @@ describe('Test Contact', () => {
   
     it('Preenche o formulário, envia e verifica se foi enviado com sucesso', () => {
       cy.fillForm_contact();
-      cy.clickContactSubmitButton().wait('@sendEmailRequest').its('response.statusCode').should('be.oneOf', [200]);
+      cy.clickContactSubmitButton("Enviar").wait('@sendEmailRequest').its('response.statusCode').should('be.oneOf', [200]);
     
       // Adicione uma verificação para a mensagem de sucesso
       // cy.get('.mensagem-de-sucesso').should('be.visible');

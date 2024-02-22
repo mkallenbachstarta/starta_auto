@@ -39,4 +39,25 @@ describe('Test homepage', () => {
         cy.clickButtonDropDownAndStayPage('[aria-label="Espanhol"]', 'Uniendo creatividad y tecnología para crear soluciones digitales de alto impacto');
         cy.clickButtonDropDownAndStayPage('[aria-label="Portugués"]', 'Unindo criatividade e tecnologia para criar soluções digitais de alto impacto');
     });
+
+    it('Clica no logo do Instagram, e verifica se foi redireiconado para a pagina correta', () => {
+        cy.get('[href="https://www.instagram.com/startaideia/"]').click()
+        cy.origin('https://www.instagram.com/', () => {
+        cy.url().should('eq', 'https://www.instagram.com/startaideia/');
+    });
+    });
+
+    it('Clica no logo do Linkedin, e verifica se foi redireiconado para a pagina correta', () => {
+        cy.get('[href="https://www.linkedin.com/company/startaideia/"]').click()
+        cy.origin('https://www.linkedin.com', () => {
+        cy.get('[data-test-id="nav-logo"]').should('be.visible')
+    });
+    });
+
+    it('Clica no logo do Facebook, e verifica se foi redireiconado para a pagina correta', () => {
+        cy.get('[href="https://www.facebook.com/startaideia/"]').click()
+        cy.origin('https://www.facebook.com/startaideia/', () => {
+            cy.url().should('eq', 'https://www.facebook.com/startaideia/');
+    });
+    });
 })
